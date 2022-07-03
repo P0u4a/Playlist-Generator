@@ -1,11 +1,11 @@
-import Link from 'next/link'
-import styles from '../styles/Home.module.css'
+import Link from 'next/link';
+import styles from '../styles/Home.module.css';
 
 export default function PlaylistDetails() {
     // Handle the submit event on form submit.
     const handleSubmit = async (event) => {
       // Stop the form from submitting and refreshing the page.
-      event.preventDefault()
+      event.preventDefault();
   
       // Get data from the form.
       const data = {
@@ -13,7 +13,7 @@ export default function PlaylistDetails() {
         size: event.target.size.value,
       }
   
-      const JSONdata = JSON.stringify(data)
+      const JSONdata = JSON.stringify(data);
   
       // Send the form data to our API and get a response.
       const response = await fetch('/api/playlistMaker', {
@@ -26,11 +26,11 @@ export default function PlaylistDetails() {
         },
         // The method is POST because we are sending data.
         method: 'POST',
-      })
+      });
   
       // Get the response data from server as JSON.
-      const result = await response.json()
-      alert(`${result.data}`)
+      const result = await response.json();
+      alert(`${result.data}`);
     }
     return (
       <div className="container">
@@ -51,5 +51,5 @@ export default function PlaylistDetails() {
           <button type="submit">Create</button>
         </form>
       </div>
-    )
-  }
+    );
+}
