@@ -33,3 +33,6 @@ yarn-error.log*
 
 #API keys and client secrets
 .env.local
+
+#Temporary
+client_secret.json
