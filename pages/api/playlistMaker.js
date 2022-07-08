@@ -21,20 +21,25 @@ export default function handler(req, res) {
       // Sends a HTTP bad request error code
       return res.status(400).json({ data: 'Playlist topic or length not found' });
     }
+
     // Get videos from youtube
-    service.search.list({
-      part: 'snippet',
-      maxResults: body.size,
-      q: body.topic,
-      type: 'video',
-      topicId: '/m/04rlf', //Music
-      videoCategoryId: 10 //Music
-    }).then((response) => {
-      const {data} = response;
-      data.items.forEach((item) => {
-        console.log(item.id.videoId);
-      })
-    }).catch((err) => console.log(err));
+    function getVideos(query, size) {
+      service.search.list({
+        part: 'snippet',
+        maxResults: size,
+        q: query,
+        type: 'video',
+        topicId: '/m/04rlf', //Music
+        videoCategoryId: 10 //Music
+      }).then((response) => {
+        const {data} = response;
+        data.items.forEach((item) => {
+          console.log(item.id.videoId);
+        })
+      }).catch((err) => console.log(err));
+    }
+
+    getVideos(body.topic, body.size);
 
     // Create user playlist using oauth token and playlist method
     //Access the list of urls here and add each item to the playlist 
