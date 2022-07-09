@@ -18,6 +18,13 @@ export default NextAuth({
       scope: 'https://www.googleapis.com/auth/youtube.force-ssl',
     }),
   ],
-  // Callback
+  // callbacks: {
+  //   async jwt({ token, account }) {
+  //     if (account) {
+  //       token.accessToken = account.access_token;
+  //     }
+  //     return token;
+  //   }
+  // }
   //secret: process.env.NEXTAUTH_SECRET,
 });

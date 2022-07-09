@@ -1,20 +1,26 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
+import styles from '../styles/Signin.module.css'
 
 export default function LoginBtn() {
-    const { data: session } = useSession();
-    
-    if (session) {
-        return (
-            <>
-            Signed in as {session.user.email} <br />
-            <button onClick={() => signOut()}>Sign out</button>
-            </>
-        );
-    }
+  const { data: session } = useSession();
 
+  if (session) {
     return (
-        <>
-        <button onClick={() => signIn('google', {callbackUrl: '/playlistRequest'})}>Get Started</button>
-        </>
+      <>
+        <button 
+        className={styles.signoutBtn}
+        onClick={() => signOut()}>Sign out
+        </button>
+      </>
     );
+  }
+
+  return (
+    <>
+      <button
+      className={styles.signinBtn}
+      onClick={() => signIn('google', { callbackUrl: '/playlistRequest' })}>
+      </button>
+    </>
+  );
 }
