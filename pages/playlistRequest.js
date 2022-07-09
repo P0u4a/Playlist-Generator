@@ -52,7 +52,8 @@ export default function PlaylistDetails() {
 
       </form>
 
-      <LoginBtn></LoginBtn>
+      <LoginBtn/>
+      
     </div>
   );
 }
