@@ -21,10 +21,10 @@ export default function Home() {
           music playlists on youtube made easy!
         </p>
 
-        <LoginBtn></LoginBtn>
+        <LoginBtn/>
 
       </main>        
     </div>    
 
-  )
+  );
 }
