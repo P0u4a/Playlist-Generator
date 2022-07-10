@@ -1,8 +1,15 @@
-import { auth } from 'google-auth-library';
+import { google } from "googleapis";
+import { getSession } from "next-auth/react";
 
-const { google } = require('googleapis');
+const handler = async (req, res) => {
 
-export default function handler(req, res) {
+  //Check that user is signed in to use the api
+  const session = await getSession(req);
+
+  if (!session) {
+    return res.status(401).json({ data: 'You must be signed in to use this service'});
+  }
+
   // Get data submitted in request's body
   const body = req.body;
 
@@ -50,3 +57,4 @@ export default function handler(req, res) {
   res.status(200).json({ data: 'Your playlist has been successfully created. Check your YouTube account!'});
 }
 
+export default handler;

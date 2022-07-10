@@ -3,11 +3,12 @@ import LoginBtn from '../components/login-btn';
 import styles from '../styles/Home.module.css';
 
 export default function PlaylistDetails() {
+
   // Handle the submit event on form submit
   const handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page
     event.preventDefault();
-    
+
     // Get data from the form.
     const data = {
       topic: event.target.topic.value,
