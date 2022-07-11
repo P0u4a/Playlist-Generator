@@ -1,7 +1,10 @@
 import { google } from "googleapis";
 import { getSession } from "next-auth/react";
+import { getToken } from "next-auth/jwt";
 
-const handler = async (req, res) => {
+const secret = process.env.NEXTAUTH_SECRET;
+
+export default async function handler(req, res) {
 
   //Check that user is signed in to use the api
   const session = await getSession(req);
@@ -23,38 +26,50 @@ const handler = async (req, res) => {
     // Sends a HTTP bad request error code
     return res.status(400).json({ data: 'playlist size and/or topic not found' });
   }
-  // Get access token
 
-  // Youtube api object
-  const service = google.youtube({
-    version: 'v3',
-    auth: process.env.API_KEY
-  });
+  // const service = google.youtube({
+  //   version: 'v3',
+  //   auth: process.env.API_KEY
+  // });
+
+  // Get access token
+  const token = await getToken({ req, secret });
+  const accessToken = token.access_token;
+
+  // Create new playlist on user account
+  // const newPlaylist = await google.youtube('v3').playlists.insert({
+  //   auth: accessToken,
+  //   part: 'snippet',
+  //   requestBody: {
+  //     snippet: {
+  //       title: 'Test',
+  //       description: 'This is a test playlist'
+  //     },
+
+  //     status: {
+  //       privacyStatus: 'private'
+  //     }
+  //   }
+  // });
+
+  console.log(newPlaylist.data);
 
   // Get videos from youtube
-  function getVideos(query, size) {
-    service.search.list({
-      part: 'snippet',
-      maxResults: size,
-      q: query,
-      type: 'video',
-      topicId: '/m/04rlf', //Music
-      videoCategoryId: 10 //Music
-    }).then((response) => {
-      const { data } = response;
-      data.items.forEach((item) => {
-       console.log(item.id.videoId);
-      })
-    }).catch((err) => console.log(err));
-  }
+  // service.search.list({
+  //   part: 'snippet',
+  //   maxResults: body.size,
+  //   q: body.topic,
+  //   type: 'video',
+  //   topicId: '/m/04rlf', //Music
+  //   videoCategoryId: 10 //Music
+  // }).then((response) => {
+  //   const { data } = response;
+  //   data.items.forEach((item) => {
+  //     console.log(item.id.videoId);
+  //   })
+  // }).catch((err) => console.log(err));
 
-  getVideos(body.topic, body.size);
 
-  // Create user playlist using oauth token and playlist method
-  //Access the list of urls here and add each item to the playlist 
-  // Return a string stating 'Playlist Sucessfully Created!' for now
   // Later update front-end to have a success pop-up with a confetti like animation
   res.status(200).json({ data: 'Your playlist has been successfully created. Check your YouTube account!'});
 }
-
-export default handler;
