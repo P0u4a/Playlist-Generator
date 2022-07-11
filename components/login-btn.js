@@ -19,7 +19,7 @@ export default function LoginBtn() {
     <>
       <button
       className={styles.signinBtn}
-      onClick={() => signIn('google', { callbackUrl: '/playlistRequest' })}>
+      onClick={() => signIn('google')}>
       </button>
     </>
   );
