@@ -1,16 +1,16 @@
-import { google } from "googleapis";
-import { getSession } from "next-auth/react";
-import { getToken } from "next-auth/jwt";
-
+import { google } from 'googleapis';
+import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
+// TODO: Get access token for authorised api call
 const secret = process.env.NEXTAUTH_SECRET;
 
 export default async function handler(req, res) {
 
-  //Check that user is signed in to use the api
-  const session = await getSession(req);
+  // Check user is signed in to use the api
+  const session = await getSession({ req });
 
   if (!session) {
-    return res.status(401).json({ data: 'You must be signed in to use this service'});
+    return res.status(401).json({ data: 'You must be signed in to use this service' });
   }
 
   // Get data submitted in request's body
@@ -27,23 +27,18 @@ export default async function handler(req, res) {
     return res.status(400).json({ data: 'playlist size and/or topic not found' });
   }
 
-  // const service = google.youtube({
-  //   version: 'v3',
-  //   auth: process.env.API_KEY
-  // });
-
   // Get access token
-  const token = await getToken({ req, secret });
-  const accessToken = token.access_token;
+  // const token = await getToken({ req });
+  // const accessToken = token.access_token;
+  //console.log(accessToken);
 
   // Create new playlist on user account
   // const newPlaylist = await google.youtube('v3').playlists.insert({
-  //   auth: accessToken,
   //   part: 'snippet',
   //   requestBody: {
   //     snippet: {
   //       title: 'Test',
-  //       description: 'This is a test playlist'
+  //       description: 'Created by YouTube Music Playlist Wizard'
   //     },
 
   //     status: {
@@ -52,9 +47,19 @@ export default async function handler(req, res) {
   //   }
   // });
 
-  console.log(newPlaylist.data);
+  //console.log(newPlaylist.data);
 
   // Get videos from youtube
+  // const musicVideos = await google.youtub('v3').search.list({
+  //   auth: process.env.API_KEY,
+  //   part: 'snippet',
+  //   maxResults: body.size,
+  //   q: body.topic,
+  //   type: 'video',
+  //   topicId: '/m/04rlf', //Music
+  //   videoCategoryId: 10 //Music  
+  // });
+
   // service.search.list({
   //   part: 'snippet',
   //   maxResults: body.size,
@@ -68,6 +73,23 @@ export default async function handler(req, res) {
   //     console.log(item.id.videoId);
   //   })
   // }).catch((err) => console.log(err));
+
+  // Add videos to playlist
+  // for (let item = 0; item < body.size; item++) {
+  //   google.youtube('v3').playlistItems.insert({
+  //     part: 'snippet',
+  //     resource: {
+  //       snippet: {
+  //         playlistId: newPlaylist.data.id,
+  //         resourceId: {
+  //           kind: 'youtube#video',
+  //           videoId: musicVideos.data.item.id.videoId
+  //         }
+  //       }
+  //     }
+  //   });
+  // }
+
 
 
   // Later update front-end to have a success pop-up with a confetti like animation
