@@ -1,6 +1,8 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
+
 //TODO: Need to handle cases where user denies access during auth process
+
 export default NextAuth({
   providers: [
     GoogleProvider({
@@ -12,7 +14,7 @@ export default NextAuth({
           prompt: 'consent',
           response_type: 'code',
           // Admin access to youtube account
-          scope: 'https://www.googleapis.com/auth/youtube.force-ssl',
+          scope: 'openid https://www.googleapis.com/auth/youtube.force-ssl'
         }
       }
     }),
@@ -20,17 +22,18 @@ export default NextAuth({
 
   secret: process.env.NEXTAUTH_SECRET,
 
-  callbacks: {
-    async jwt({ token, account }) {
-      if (account) {
-        token.accessToken = account.access_token
-      }
-      return token;
-    }
-  },
-  async session({ session, token }) {
-    session.accessToken = token.access_token
+  // callbacks: {
+  //   async jwt({ token, user, account }) {
 
-    return session;
-  }
+  //     if (account && user) {
+  //       token.access_token = account.access_token;
+  //     }
+  //     return token;
+  //   },
+  //   async session({ session, token, user }) {
+  //     session.access_token = token.access_token;
+  //     return session;
+  //   }
+  // }
+
 });
