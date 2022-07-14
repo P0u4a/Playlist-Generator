@@ -9,7 +9,8 @@ export default function LoginBtn() {
       <>
         <button 
         className={styles.signoutBtn}
-        onClick={() => signOut()}>Sign out
+                              // Prevent page reload
+        onClick={() => signOut({ redirect: false })}>Sign out
         </button>
       </>
     );
@@ -19,6 +20,7 @@ export default function LoginBtn() {
     <>
       <button
       className={styles.signinBtn}
+                    // Start Oauth flow
       onClick={() => signIn('google')}>
       </button>
     </>
