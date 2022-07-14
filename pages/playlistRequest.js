@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css';
 export default function PlaylistDetails() {
 
   // Handle the submit event on form submit
+  // Put handleSubmit function into a seperate file 
   const handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page
     event.preventDefault();
