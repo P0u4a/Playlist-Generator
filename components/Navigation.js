@@ -4,7 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import LoginBtn from './login-btn';
 import Link from 'next/link';
 
-//TODO: Add gradient to navbar
+//TODO: Add gradient to navbar background
 export default function Navigate() {
   return (
     <>
