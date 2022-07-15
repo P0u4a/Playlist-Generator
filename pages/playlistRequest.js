@@ -1,6 +1,5 @@
-import Link from 'next/link';
 import LoginBtn from '../components/login-btn';
-import styles from '../styles/Home.module.css';
+import Navigate from '../components/Navigation';
 
 export default function PlaylistDetails() {
 
@@ -20,6 +19,8 @@ export default function PlaylistDetails() {
 
     // Send the form data to our API and get a response
     const response = await fetch('/api/playlistMaker', {
+      // Oauth credentials included while fetching
+      credentials: 'include', //This is meant to work but doesn't seem to be
       // Body of the request is the JSON data created above
       body: JSONdata,
 
@@ -36,26 +37,19 @@ export default function PlaylistDetails() {
   }
 
   return (
-    <div className='container'>
-      <h1 className={styles.card}>
-        <Link href='/'>
-          <a>Return</a>
-        </Link>
-      </h1>
-
-      <p className={styles.description}></p>
-
+    <>
+      <Navigate/>
+      
       <form onSubmit={handleSubmit}>
         <label htmlFor='topic'>Enter playlist topic (e.g. Eminem)</label>
         <input type='text' id='topic' name='topic' required />
         <label htmlFor='size'>Enter playlist size</label>
         <input type='text' id='size' name='size' required />
         <button type='submit'>Create</button>
-
       </form>
 
       <LoginBtn/>
       
-    </div>
+    </>
   );
 }

@@ -2,10 +2,14 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 import LoginBtn from '../components/login-btn';
+import Navigate from '../components/Navigation';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    
+    <div>
+      <Navigate/>
+
       <Head>
         <title>Wizard</title>
         <meta name='Title' content='Youtube playlist generator' />
@@ -27,9 +31,8 @@ export default function Home() {
           </Link>
         </h1>
 
-        <LoginBtn/>
-
       </main>
+      <LoginBtn/>
     </div>    
 
   );
