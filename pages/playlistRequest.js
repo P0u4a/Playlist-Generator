@@ -1,5 +1,3 @@
-import LoginBtn from '../components/login-btn';
-import Navigate from '../components/Navigation';
 
 export default function PlaylistDetails() {
 
@@ -38,18 +36,13 @@ export default function PlaylistDetails() {
 
   return (
     <>
-      <Navigate/>
-      
       <form onSubmit={handleSubmit}>
         <label htmlFor='topic'>Enter playlist topic (e.g. Eminem)</label>
         <input type='text' id='topic' name='topic' required />
         <label htmlFor='size'>Enter playlist size</label>
         <input type='text' id='size' name='size' required />
         <button type='submit'>Create</button>
-      </form>
-
-      <LoginBtn/>
-      
+      </form>      
     </>
   );
 }
