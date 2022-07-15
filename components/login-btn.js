@@ -1,5 +1,5 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
-import styles from '../styles/Signin.module.css'
+import Button from 'react-bootstrap/Button';
 
 export default function LoginBtn() {
   const { data: session } = useSession();
@@ -7,22 +7,22 @@ export default function LoginBtn() {
   if (session) {
     return (
       <>
-        <button 
-        className={styles.signoutBtn}
+        <Button variant='light'
                               // Prevent page reload
-        onClick={() => signOut({ redirect: false })}>Sign out
-        </button>
+        onClick={() => signOut({ redirect: false })}>
+          Sign out
+        </Button>
       </>
     );
   }
 
   return (
     <>
-      <button
-      className={styles.signinBtn}
+      <Button variant='primary'
                     // Start Oauth flow
       onClick={() => signIn('google')}>
-      </button>
+        Sign in
+      </Button>
     </>
   );
 }

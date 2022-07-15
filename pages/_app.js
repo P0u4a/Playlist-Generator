@@ -8,7 +8,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
       <Navigate/>
-      <LoginBtn/>
       <Component {...pageProps} />
     </SessionProvider>
 
