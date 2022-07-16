@@ -1,7 +1,6 @@
 import '../styles/globals.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import LoginBtn from '../components/login-btn';
-import Navigate from '../components/Navigation';
+import Navigate from '../components/navigation';
 import { SessionProvider } from "next-auth/react";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
