@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -26,8 +27,17 @@ export default function Home() {
             <a>Get Started</a>
           </Link>
         </h1>
-
       </main>
+
+      <footer className={styles.footer}>
+        <a>
+          Powered by{' '}
+          <span className={styles.logo}>
+            <Image src='/vercel.svg' alt='vercel logo' width={72} height={20} />
+          </span>
+        </a>
+      </footer>
+
     </div>    
 
   );
