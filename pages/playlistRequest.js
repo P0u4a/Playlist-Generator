@@ -1,8 +1,20 @@
-import PlaylistForm from "../components/form";
 import styles from '../styles/Home.module.css';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import { useState } from 'react';
 
-export default function PlaylistDetails() {
-
+export default function Playlistform() {
+  // Keep track of Range slider value
+  const [value, setValue] = useState(25);
+  // Render tooltip on Range slider
+  const renderTooltip = (props) => (
+    <Tooltip id='slider-tooltip' {...props}>
+      {value}
+    </Tooltip>
+  );
   // Handle the submit event on form submit
   const handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page
@@ -36,23 +48,41 @@ export default function PlaylistDetails() {
   }
 
   return (
-    <main>
+    <>
       <h1 className={styles.title}>
-      Playlist Creator
+        Playlist Creator
       </h1>
-      <br/>
-      <PlaylistForm/>
-    </main>
+      <br />
+      <Form onSubmit={handleSubmit}>
+        <Form.Group as={Col} className='mb-3' controlId='topic'>
+          <Form.Label column sm={2}>
+            Topic
+          </Form.Label>
+          <Col sm={3}>
+            <Form.Control required type='text' placeholder='Taylor Swift' />
+          </Col>
+        </Form.Group>
 
+        <Form.Group as={Col} className='mb-3' controlId='size'>
+          <Form.Label column sm={2}>
+            Size
+          </Form.Label>
+          <Col sm={3}>
+            <OverlayTrigger delay={{ hide: 800 }} placement='right' overlay={renderTooltip}>
+              <Form.Range
+                value={value} onChange={change => setValue(change.target.value)}
+                min={1} max={50}
+              />
+            </OverlayTrigger>
+          </Col>
+        </Form.Group>
 
-    // <>
-    //   <form onSubmit={handleSubmit}>
-    //     <label htmlFor='topic'>Enter playlist topic (e.g. Eminem)</label>
-    //     <input type='text' id='topic' name='topic' required />
-    //     <label htmlFor='size'>Enter playlist size</label>
-    //     <input type='text' id='size' name='size' required />
-    //     <button type='submit'>Create</button>
-    //   </form>      
-    // </>
+        <Form.Group as={Col} className='mb-3'>
+          <Col sm={{ span: 10, offset: 3 }}>
+            <Button variant='outline-primary' type='submit'>Create</Button>
+          </Col>
+        </Form.Group>
+      </Form>
+    </>
   );
 }
