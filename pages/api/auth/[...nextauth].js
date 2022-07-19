@@ -22,18 +22,20 @@ export default NextAuth({
 
   secret: process.env.NEXTAUTH_SECRET,
 
-  // callbacks: {
-  //   async jwt({ token, user, account }) {
+  callbacks: {
+    async jwt({ token, user, account }) {
+      // include access token inside jwt upon signin
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+      return token;
+    },
 
-  //     if (account && user) {
-  //       token.access_token = account.access_token;
-  //     }
-  //     return token;
-  //   },
-  //   async session({ session, token, user }) {
-  //     session.access_token = token.access_token;
-  //     return session;
-  //   }
-  // }
+    async session({ session, token, user }) {
+      // save the access token in the session
+      session.accessToken = token.accessToken;
+      return session;
+    }
+  }
 
 });

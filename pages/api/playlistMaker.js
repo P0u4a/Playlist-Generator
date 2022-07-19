@@ -1,9 +1,8 @@
 import { google } from 'googleapis';
 import { getSession } from 'next-auth/react';
 import { getToken } from 'next-auth/jwt';
-// TODO: Get access token for authorised api call
-const secret = process.env.NEXTAUTH_SECRET;
 
+// Wrap this function in a try catch statement
 export default async function handler(req, res) {
 
   // Check user is signed in to use the api
@@ -28,51 +27,48 @@ export default async function handler(req, res) {
   }
 
   // Get access token
-  // const token = await getToken({ req });
-  // const accessToken = token.access_token;
-  //console.log(accessToken);
+  //const token = await getToken({ req });
+  const accessToken = session.accessToken;
+  // Create Oauth instance
+  const auth = new google.auth.OAuth2({
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET
+  });
+  auth.setCredentials({
+    access_token: accessToken
+  });
+
+  // Create youtube api instance
+  const service = google.youtube({
+    version: 'v3',
+    auth: auth
+  });
 
   // Create new playlist on user account
-  // const newPlaylist = await google.youtube('v3').playlists.insert({
-  //   part: 'snippet',
-  //   requestBody: {
-  //     snippet: {
-  //       title: 'Test',
-  //       description: 'Created by YouTube Music Playlist Wizard'
-  //     },
-
-  //     status: {
-  //       privacyStatus: 'private'
-  //     }
-  //   }
-  // });
-
-  //console.log(newPlaylist.data);
+  const newPlaylist = await service.playlists.insert({
+    part: 'snippet',
+    requestBody: {
+      snippet: {
+        title: `${body.topic} playlist`,
+        description: 'Created by YouTube Music Playlist Wizard'
+      }
+    }
+  });
 
   // Get videos from youtube
-  // const musicVideos = await google.youtub('v3').search.list({
-  //   auth: process.env.API_KEY,
-  //   part: 'snippet',
-  //   maxResults: body.size,
-  //   q: body.topic,
-  //   type: 'video',
-  //   topicId: '/m/04rlf', //Music
-  //   videoCategoryId: 10 //Music  
-  // });
-
-  // service.search.list({
-  //   part: 'snippet',
-  //   maxResults: body.size,
-  //   q: body.topic,
-  //   type: 'video',
-  //   topicId: '/m/04rlf', //Music
-  //   videoCategoryId: 10 //Music
-  // }).then((response) => {
-  //   const { data } = response;
-  //   data.items.forEach((item) => {
-  //     console.log(item.id.videoId);
-  //   })
-  // }).catch((err) => console.log(err));
+  service.search.list({
+    part: 'snippet',
+    maxResults: body.size,
+    q: body.topic,
+    type: 'video',
+    topicId: '/m/04rlf', //Music
+    videoCategoryId: 10 //Music
+  }).then((response) => {
+    const { data } = response;
+    data.items.forEach((item) => {
+      console.log(item.id.videoId);
+    });
+  }).catch((err) => console.log(err));
 
   // Add videos to playlist
   // for (let item = 0; item < body.size; item++) {
