@@ -3,19 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
-import { useState } from 'react';
-//TODO: Turn form elements like range slider and radio buttons into seperate components
+import Slider from '../components/range-slider';
+
+//TODO: Turn range slider into a seperate component
 export default function Playlistform() {
-  // Keep track of Range slider value
-  const [value, setValue] = useState(25);
-  // Render tooltip on Range slider
-  const renderTooltip = (props) => (
-    <Tooltip id='slider-tooltip' {...props}>
-      {value}
-    </Tooltip>
-  );
+
   // Handle the submit event on form submit
   const handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page
@@ -67,12 +59,7 @@ export default function Playlistform() {
             Size
           </Form.Label>
           <Col sm={10}>
-            <OverlayTrigger delay={{ hide: 800 }} placement='bottom' overlay={renderTooltip}>
-              <Form.Range
-                value={value} onChange={change => setValue(change.target.value)}
-                min={1} max={50}
-              />
-            </OverlayTrigger>
+            <Slider/>
           </Col>
         </Form.Group>
 
