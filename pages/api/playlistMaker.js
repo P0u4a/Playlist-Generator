@@ -3,6 +3,10 @@ import { getSession } from 'next-auth/react';
 import { getToken } from 'next-auth/jwt';
 
 // Wrap this function in a try catch statement
+// NOTE: currently access token is being exposed client side which is
+//       unsafe so we should see if its possible to only use getToken
+//       to not have to expose the access token (for security)
+// For greater style consider splitting this into smaller components inside the api folder
 export default async function handler(req, res) {
 
   // Check user is signed in to use the api
@@ -45,7 +49,7 @@ export default async function handler(req, res) {
   });
 
   // Create new playlist on user account
-  const newPlaylist = await service.playlists.insert({
+  const playlistResponse = await service.playlists.insert({
     part: 'snippet',
     requestBody: {
       snippet: {
@@ -54,39 +58,43 @@ export default async function handler(req, res) {
       }
     }
   });
+  // Collect playlist id from api response
+  const newPlaylistId = playlistResponse.data.id;
 
   // Get videos from youtube
-  service.search.list({
+  const videos = await service.search.list({
     part: 'snippet',
     maxResults: body.size,
     q: body.topic,
     type: 'video',
     topicId: '/m/04rlf', //Music
     videoCategoryId: 10 //Music
-  }).then((response) => {
-    const { data } = response;
-    data.items.forEach((item) => {
-      console.log(item.id.videoId);
-    });
-  }).catch((err) => console.log(err));
+  });
+  // Save list of video objects
+  const videoObj = videos.data.items;
+  // Initialise empty array of links to be filled
+  const videoLinks = [];
+  // Save every video id in the list
+  for (let i=0; i < body.size; i++) {
+    videoLinks.push(videoObj[i].id.videoId);
+  }
 
   // Add videos to playlist
-  // for (let item = 0; item < body.size; item++) {
-  //   google.youtube('v3').playlistItems.insert({
-  //     part: 'snippet',
-  //     resource: {
-  //       snippet: {
-  //         playlistId: newPlaylist.data.id,
-  //         resourceId: {
-  //           kind: 'youtube#video',
-  //           videoId: musicVideos.data.item.id.videoId
-  //         }
-  //       }
-  //     }
-  //   });
-  // }
-
-
+  for (let item = 0; item < body.size; item++) {
+    const temp = await service.playlistItems.insert({
+      part: 'snippet',
+      requestBody: {
+        snippet: {
+          playlistId: newPlaylistId,
+          position: item,
+          resourceId: {
+            kind: 'youtube#video',
+            videoId: videoLinks[item]
+          }
+        }
+      }
+    });
+  }
 
   // Later update front-end to have a success pop-up with a confetti like animation
   res.status(200).json({ data: 'Your playlist has been successfully created. Check your YouTube account!'});
