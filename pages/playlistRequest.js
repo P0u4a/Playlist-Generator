@@ -4,15 +4,19 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Slider from '../components/range-slider';
+import Spinner from 'react-bootstrap/Spinner';
+import { useState } from 'react';
 
 //TODO: Turn range slider into a seperate component
 export default function Playlistform() {
+  const [click, setClick] = useState(false);
 
   // Handle the submit event on form submit
   const handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page
     event.preventDefault();
-
+    // Start spinner
+    setClick(true);
     // Get data from the form.
     const data = {
       topic: event.target.topic.value,
@@ -36,6 +40,8 @@ export default function Playlistform() {
     // Get the response data from server as JSON
     const result = await response.json();
     alert(`${result.data}`);
+    // Stop spinner
+    setClick(false);
   }
 
   return (
@@ -65,7 +71,10 @@ export default function Playlistform() {
 
         <Form.Group as={Row} className='mb-3'>
           <Col sm={{ span: 10, offset: 2 }}>
-            <Button variant='outline-primary' type='submit'>Create</Button>
+            <Button variant='outline-primary' type='submit'>
+              {!click && 'Create'}
+              {click && <Spinner animation='border' variant='primary'/>}
+            </Button>
           </Col>
         </Form.Group>
       </Form>
