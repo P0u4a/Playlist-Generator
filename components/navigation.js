@@ -8,7 +8,7 @@ import Link from 'next/link';
 export default function Navigate() {
   return (
     <>
-      <Navbar collapseOnSelect expand='lg' bg='danger' variant='dark' sticky ='topic'>
+      <Navbar collapseOnSelect expand='lg' bg='danger' variant='dark' sticky ='top'>
         <Container>
           <Navbar.Brand href='/'>Wizard</Navbar.Brand>
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
@@ -20,7 +20,7 @@ export default function Navigate() {
                 </Link>
               </Nav.Item>
               <Nav.Item>
-                <Link href='playlistRequest' passHref>
+                <Link href='#form' passHref>
                   <Nav.Link>Create Playlist</Nav.Link>
                 </Link>
               </Nav.Item>

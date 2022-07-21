@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
-import Slider from '../components/range-slider';
+import Slider from './range-slider';
 import Spinner from 'react-bootstrap/Spinner';
 import { useState } from 'react';
 
@@ -46,10 +46,6 @@ export default function Playlistform() {
 
   return (
     <>
-      <h1 className={styles.title}>
-        Playlist Creator
-      </h1>
-      <br />
       <Form onSubmit={handleSubmit}>
         <Form.Group as={Row} className='mb-3' controlId='topic'>
           <Form.Label column sm={2}>

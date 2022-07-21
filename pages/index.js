@@ -2,6 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import Playlistform from '../components/playlistRequest';
 
 export default function Home() {
   return (
@@ -23,11 +24,15 @@ export default function Home() {
         </p>
 
         <h1 className={styles.title}>
-          <Link href = '/playlistRequest'>
+          <Link href = '#form'>
             <a>Get Started</a>
           </Link>
         </h1>
       </main>
+
+      <div id='form'>
+        <Playlistform/>
+      </div>
 
       <footer className={styles.footer}>
         <a>
