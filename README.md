@@ -12,29 +12,31 @@ Demo <sup>*</sup> Link here
 do this can be found on the website by interacting with the ```CLICK ME FIRST!``` button._ 
 
 # How to run locally
-1. Clone the repository with ```git clone https://github.com/P0u4a/youtube-music-playlist-wizard.git``` 
 
-2. Run ```npm install``` to install dependencies
+## Installation
+Clone the repository with ```git clone https://github.com/P0u4a/youtube-music-playlist-wizard.git``` 
 
-3. Go to https://console.cloud.google.com/getting-started and enable
+Run ```npm install``` to install dependencies
+## Oauth Credentials
+Go to https://console.cloud.google.com/getting-started and enable
 the Youtube data api v3
 
-4. Configure your Oauth consent screen, making sure to set the scope
+Configure your Oauth consent screen, making sure to set the scope
 to ```https://www.googleapis.com/auth/youtube.force-ssl```
 
-5. Under the credentials tab, click new credentials and choose **new
+Under the credentials tab, click new credentials and choose **new
 Oauth client ID**. Choose web app as the application type and set the
 **Authorised Javascript Origins** to ```http://localhost:3000```
 (assuming you are hosting on port 3000, otherwise set your own port).
 Then, set the **Authorised redirect URI** to ```http://localhost:3000/api/auth/callback/google```.
+## Enviornment Variables
+Inside the app's root directory, create a ```.env``` file and add the following variables:
+ * ```CLIENT_ID```
+ * ```CLIENT_SECRET```
+ * ```NEXTAUTH_SECRET```
 
-6. Inside the app's root directory, create a ```.env``` file and add the following variables:
-    * ```CLIENT_ID```
-    * ```CLIENT_SECRET```
-    * ```NEXTAUTH_SECRET```
-    
-7. Set ```CLIENT_ID``` and ```CLIENT_SECRET``` to the values generated when you created your
+Set ```CLIENT_ID``` and ```CLIENT_SECRET``` to the values generated when you created your
 Oauth credentials. Lastly, you should set ```NEXTAUTH_SECRET``` to a randomly generated value as it 
 is used to encyrpt the JSON web tokens generated during the Oauth flow.
-
-8. Run ```npm run dev``` in the terminal and make the magic happen.
+## Running the app
+Run ```npm run dev``` in the terminal and make the magic happen.
