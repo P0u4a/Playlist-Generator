@@ -18,12 +18,10 @@ Then, set the **Authorised redirect URI** to ```http://localhost:3000/api/auth/c
 5. Inside the app's root directory, create a ```.env``` file and add the following variables:
     * ```CLIENT_ID```
     * ```CLIENT_SECRET```
-    * ```NEXTAUTH_URL```
     * ```NEXTAUTH_SECRET```
     
 6. Set ```CLIENT_ID``` and ```CLIENT_SECRET``` to the values generated when you created your
-Oauth credentials. ```NEXTAUTH_URL``` should be set to ```http://localhost:3000```. Lastly,
-you should set ```NEXTAUTH_SECRET``` to a randomly generated value as it is used to encyrpt
-the JWT during the Oauth flow.
+Oauth credentials. Lastly, you should set ```NEXTAUTH_SECRET``` to a randomly generated value as it 
+is used to encyrpt the JSON web tokens generated during the Oauth flow.
 
 7. Run ```npm run dev``` in the terminal and make the magic happen.
