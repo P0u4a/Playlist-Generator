@@ -1,11 +1,7 @@
 import { google } from 'googleapis';
 import { getSession } from 'next-auth/react';
 import { getToken } from 'next-auth/jwt';
-
 // Wrap this function in a try catch statement
-// NOTE: currently access token is being exposed client side which is
-//       unsafe so we should see if its possible to only use getToken
-//       to not have to expose the access token (for security)
 // For greater style consider splitting this into smaller components inside the api folder
 export default async function handler(req, res) {
 
@@ -18,7 +14,6 @@ export default async function handler(req, res) {
 
   // Get data submitted in request's body
   const body = req.body;
-
   // Optional logging to see the responses
   // in the command line where next.js app is running
   console.log('body: ', body);
@@ -27,12 +22,12 @@ export default async function handler(req, res) {
   // and returns early if they are not found
   if (!body.topic || !body.size) {
     // Sends a HTTP bad request error code
-    return res.status(400).json({ data: 'playlist size and/or topic not found' });
+    return res.status(400).json({ data: 'playlist topic not found' });
   }
 
   // Get access token
-  //const token = await getToken({ req });
-  const accessToken = session.accessToken;
+  const token = await getToken({ req });
+  const accessToken = token.accessToken;
   // Create Oauth instance
   const auth = new google.auth.OAuth2({
     clientId: process.env.CLIENT_ID,
@@ -80,22 +75,26 @@ export default async function handler(req, res) {
   }
 
   // Add videos to playlist
-  for (let item = 0; item < body.size; item++) {
-    const temp = await service.playlistItems.insert({
+  for (let index = 0; index < body.size; index++) {
+    let videoPosition = 0;
+    const videoLink = videoLinks[videoPosition];
+    await service.playlistItems.insert({
       part: 'snippet',
       requestBody: {
         snippet: {
           playlistId: newPlaylistId,
-          position: item,
+          position: videoPosition,
           resourceId: {
             kind: 'youtube#video',
-            videoId: videoLinks[item]
+            videoId: videoLink
           }
         }
       }
     });
+    videoPosition++;
   }
 
+  
   // Later update front-end to have a success pop-up with a confetti like animation
-  res.status(200).json({ data: 'Your playlist has been successfully created. Check your YouTube account!'});
+  res.status(200).json({ data: 'Your playlist has been successfully created. Check your YouTube account!' });
 }

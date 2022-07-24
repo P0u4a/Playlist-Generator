@@ -29,12 +29,6 @@ export default NextAuth({
         token.accessToken = account.access_token;
       }
       return token;
-    },
-
-    async session({ session, token, user }) {
-      // save the access token in the session
-      session.accessToken = token.accessToken;
-      return session;
     }
   }
 
