@@ -49,28 +49,28 @@ export default function Playlistform() {
       <Container>
         <Form onSubmit={handleSubmit}>
           <Form.Group as={Row} className='mb-3' controlId='topic'>
-            <Form.Label column sm={2}>
+            <Form.Label style={{ color: '#f0f8ff' }}>
               Topic
             </Form.Label>
-            <Col sm={10}>
+            <Col sm={12}>
               <Form.Control required type='text' placeholder='Jack Harlow' />
             </Col>
           </Form.Group>
 
           <Form.Group as={Row} className='mb-3' controlId='size'>
-            <Form.Label column sm={2}>
+            <Form.Label style={{ color: '#f0f8ff' }}>
               Size
             </Form.Label>
-            <Col sm={10}>
+            <Col sm={12}>
               <Slider />
             </Col>
           </Form.Group>
 
           <Form.Group as={Row} className='mb-3'>
             <Col sm={{ span: 10, offset: 2 }}>
-              <Button variant='outline-primary' type='submit'>
+              <Button variant='primary' type='submit'>
                 {!click && 'Create'}
-                {click && <Spinner animation='border' variant='primary' />}
+                {click && <Spinner animation='border' variant='light' />}
               </Button>
             </Col>
           </Form.Group>
