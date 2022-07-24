@@ -77,7 +77,6 @@ export default async function handler(req, res) {
   // Add videos to playlist
   for (let index = 0; index < body.size; index++) {
     let videoPosition = 0;
-    const videoLink = videoLinks[videoPosition];
     await service.playlistItems.insert({
       part: 'snippet',
       requestBody: {
@@ -86,7 +85,7 @@ export default async function handler(req, res) {
           position: videoPosition,
           resourceId: {
             kind: 'youtube#video',
-            videoId: videoLink
+            videoId: videoLinks[index]
           }
         }
       }
