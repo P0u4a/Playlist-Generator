@@ -1,10 +1,10 @@
-import styles from '../styles/Home.module.css';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
-import Slider from './range-slider';
+import Slider from '../components/range-slider';
 import Spinner from 'react-bootstrap/Spinner';
+import Container from 'react-bootstrap/Container'
 import { useState } from 'react';
 
 //TODO: Turn range slider into a seperate component
@@ -46,34 +46,36 @@ export default function Playlistform() {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group as={Row} className='mb-3' controlId='topic'>
-          <Form.Label column sm={2}>
-            Topic
-          </Form.Label>
-          <Col sm={10}>
-            <Form.Control required type='text' placeholder='Taylor Swift' />
-          </Col>
-        </Form.Group>
+      <Container>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group as={Row} className='mb-3' controlId='topic'>
+            <Form.Label column sm={2}>
+              Topic
+            </Form.Label>
+            <Col sm={10}>
+              <Form.Control required type='text' placeholder='Jack Harlow' />
+            </Col>
+          </Form.Group>
 
-        <Form.Group as={Row} className='mb-3' controlId='size'>
-          <Form.Label column sm={2}>
-            Size
-          </Form.Label>
-          <Col sm={10}>
-            <Slider/>
-          </Col>
-        </Form.Group>
+          <Form.Group as={Row} className='mb-3' controlId='size'>
+            <Form.Label column sm={2}>
+              Size
+            </Form.Label>
+            <Col sm={10}>
+              <Slider />
+            </Col>
+          </Form.Group>
 
-        <Form.Group as={Row} className='mb-3'>
-          <Col sm={{ span: 10, offset: 2 }}>
-            <Button variant='outline-primary' type='submit'>
-              {!click && 'Create'}
-              {click && <Spinner animation='border' variant='primary'/>}
-            </Button>
-          </Col>
-        </Form.Group>
-      </Form>
+          <Form.Group as={Row} className='mb-3'>
+            <Col sm={{ span: 10, offset: 2 }}>
+              <Button variant='outline-primary' type='submit'>
+                {!click && 'Create'}
+                {click && <Spinner animation='border' variant='primary' />}
+              </Button>
+            </Col>
+          </Form.Group>
+        </Form>
+      </Container>
     </>
   );
 }
