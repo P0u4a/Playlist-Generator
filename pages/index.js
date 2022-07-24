@@ -1,38 +1,29 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-import Link from 'next/link';
 import Image from 'next/image';
-import Playlistform from '../components/playlistRequest';
+import Playlistform from './playlistRequest';
 
 export default function Home() {
+
   return (
-    
     <div>
       <Head>
-        <title>Wizard</title>
+        <title>Music Playlist Generator</title>
         <meta name='Title' content='Youtube playlist generator' />
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='/vinyl.svg' />
       </Head>
-
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Youtube Music Playlist Wizard
+          Music Playlist Generator
         </h1>
 
         <p className={styles.description}>
-          music playlists on youtube made easy!
+          jumpstart your youtube playlist creation!
         </p>
-
-        <h1 className={styles.title}>
-          <Link href = '#form'>
-            <a>Get Started</a>
-          </Link>
-        </h1>
+        <div id='form'>
+          <Playlistform />
+        </div>
       </main>
-
-      <div id='form'>
-        <Playlistform/>
-      </div>
 
       <footer className={styles.footer}>
         <a>
@@ -42,8 +33,6 @@ export default function Home() {
           </span>
         </a>
       </footer>
-
-    </div>    
-
+    </div>
   );
 }
