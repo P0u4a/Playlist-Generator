@@ -1,34 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Music Playlist Generator 
 
-## Getting Started
+Automatically create music playlists on your youtube account.
 
-First, run the development server:
+Simply enter the artist, band, or genre you would like your playlist to be based on, and use the slider to set the playlist's length. 
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<img src='https://user-images.githubusercontent.com/66873325/180650652-60437fc3-037a-4a55-927b-2564d38cd70f.svg' alt='logo' width='100' height='100'/>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project was built with Nextjs, Nextauth for authentication and react-bootstrap for the UI. 
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Demo <sup>*</sup> Link here
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+*_You must be added as a test user to be able to access the api in the demo app as the project has not been verified by google as of yet. Instructions on how to
+do this can be found on the website by interacting with the ```CLICK ME FIRST!``` button._ 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# How to run locally
 
-## Learn More
+## Installation
+Clone the repository with ```git clone https://github.com/P0u4a/youtube-music-playlist-wizard.git``` 
 
-To learn more about Next.js, take a look at the following resources:
+Run ```npm install``` to install dependencies
+## Oauth Credentials
+Go to https://console.cloud.google.com/getting-started and enable
+the Youtube data api v3
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Configure your Oauth consent screen, making sure to set the scope
+to ```https://www.googleapis.com/auth/youtube.force-ssl```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Under the credentials tab, click new credentials and choose **new
+Oauth client ID**. Choose web app as the application type and set the
+**Authorised Javascript Origins** to ```http://localhost:3000```
+(assuming you are hosting on port 3000, otherwise set your own port).
+Then, set the **Authorised redirect URI** to ```http://localhost:3000/api/auth/callback/google```.
+## Enviornment Variables
+Inside the app's root directory, create a ```.env``` file and add the following variables:
+ * ```CLIENT_ID```
+ * ```CLIENT_SECRET```
+ * ```NEXTAUTH_SECRET```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Set ```CLIENT_ID``` and ```CLIENT_SECRET``` to the values generated when you created your
+Oauth credentials. Lastly, you should set ```NEXTAUTH_SECRET``` to a randomly generated value as it 
+is used to encyrpt the JSON web tokens generated during the Oauth flow.
+## Running the app
+Run ```npm run dev``` in the terminal and make the magic happen.
