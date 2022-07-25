@@ -14,8 +14,8 @@ export default async function handler(req, res) {
 
   // Get data submitted in request's body
   const body = req.body;
-  // Optional logging to see the responses
-  // in the command line where next.js app is running
+  // Logging to see the responses
+  // in the command line
   console.log('body: ', body);
 
   // Guard clause checks for playlist topic and size,
@@ -76,6 +76,7 @@ export default async function handler(req, res) {
 
   // Add videos to playlist
   for (let index = 0; index < body.size; index++) {
+    // Track the video position in the playlist
     let videoPosition = 0;
     await service.playlistItems.insert({
       part: 'snippet',
@@ -85,15 +86,16 @@ export default async function handler(req, res) {
           position: videoPosition,
           resourceId: {
             kind: 'youtube#video',
-            videoId: videoLinks[index]
+            videoId: videoLinks[videoPosition]
           }
         }
       }
     });
+    // Increment when previous video is successfully added
     videoPosition++;
   }
 
-  
+
   // Later update front-end to have a success pop-up with a confetti like animation
   res.status(200).json({ data: 'Your playlist has been successfully created. Check your YouTube account!' });
 }
