@@ -12,7 +12,7 @@ export default function Slider() {
     playlistSize = 'small 😀';
   }
   else if (value >= 17 && value <= 32) {
-    playlistSize = 'medium 😐';
+    playlistSize = 'medium 😓';
   }
   else {
     playlistSize = 'large 😰';
