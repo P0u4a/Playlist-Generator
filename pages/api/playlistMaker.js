@@ -1,14 +1,15 @@
 import { google } from 'googleapis';
 import { getSession } from 'next-auth/react';
 import { getToken } from 'next-auth/jwt';
-// Wrap this function in a try catch statement
+
+
 export default async function handler(req, res) {
 
   // Check user is signed in to use the api
   const session = await getSession({ req });
 
   if (!session) {
-    return res.status(401).json({ data: 'You must be signed in to use this service' });
+    return res.status(401).json({ data: 'You must be signed in to use this service 🤖' });
   }
 
   // Get data submitted in request's body
@@ -21,7 +22,7 @@ export default async function handler(req, res) {
   // and returns early if they are not found
   if (!body.topic || !body.size) {
     // Sends a HTTP bad request error code
-    return res.status(400).json({ data: 'playlist topic not found' });
+    return res.status(400).json({ data: 'playlist topic and/or size not found' });
   }
 
   // Get access token
@@ -49,7 +50,7 @@ export default async function handler(req, res) {
       requestBody: {
         snippet: {
           title: `${body.topic} playlist`,
-          description: 'Created by YouTube Music Playlist Wizard'
+          description: 'Created by Music Playlist Generator'
         }
       }
     });
@@ -97,10 +98,10 @@ export default async function handler(req, res) {
       videoPosition++;
     }
   } catch (err) {
-    return res.status(401).json({ data: 'Insufficient authorisation' });
+    return res.status(401).json({ data: 'Something went wrong 😬...\nDid you give access to your YouTube account?' });
   }
 
 
   // Later update front-end to have a success pop-up with a confetti like animation
-  res.status(200).json({ data: 'Your playlist has been successfully created. Check your YouTube account!' });
+  res.status(200).json({ data: '🎉 Your playlist has been successfully created\nCheck your YouTube account!' });
 }
