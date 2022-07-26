@@ -1,4 +1,4 @@
-# Music Playlist Generator 
+# Music Playlist Generator 🎶
 
 Automatically create music playlists on your youtube account.
 
@@ -8,10 +8,7 @@ Simply enter the artist, band, or genre you would like your playlist to be based
 
 This project was built with Nextjs, Nextauth for authentication and react-bootstrap for the UI. 
 
-Demo <sup>*</sup> Link here
-
-*_You must be added as a test user to be able to access the api in the demo app as the project has not been verified by google as of yet. Instructions on how to
-do this can be found on the website by interacting with the ```CLICK ME FIRST!``` button._ 
+Demo Link here
 
 # How to run locally
 
@@ -42,3 +39,8 @@ Oauth credentials. Lastly, you should set ```NEXTAUTH_SECRET``` to a randomly ge
 is used to encyrpt the JSON web tokens generated during the Oauth flow.
 ## Running the app
 Run ```npm run dev``` in the terminal and make the magic happen.
+
+# Future Extensions 🔮
+* Implement bot account to create playlists on if user does not want to sign in
+* Replace JS alert box with bootstrap toasts
+* Add playlist preset options
