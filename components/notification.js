@@ -22,11 +22,12 @@ export default function Notification() {
           <Modal.Title>Privacy Policy</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          This app is not verified by google yet. However, you can be
+          This app is not verified by google <b>yet</b>. However, you can be
           assured that your YouTube account is not tampered with, and the premissions
           you grant to this service are only used to create your desired music playlist.
           You can revoke access whenever you wish by going to the security section of your
-          Google account.
+          Google account.<br /><br />
+          
           Visit the Github Page to inspect the codebase and view instructions on how to run the app locally.
         </Modal.Body>
         <Modal.Footer>
