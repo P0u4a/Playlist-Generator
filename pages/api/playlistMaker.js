@@ -2,7 +2,6 @@ import { google } from 'googleapis';
 import { getSession } from 'next-auth/react';
 import { getToken } from 'next-auth/jwt';
 // Wrap this function in a try catch statement
-// For greater style consider splitting this into smaller components inside the api folder
 export default async function handler(req, res) {
 
   // Check user is signed in to use the api
@@ -43,56 +42,62 @@ export default async function handler(req, res) {
     auth: auth
   });
 
-  // Create new playlist on user account
-  const playlistResponse = await service.playlists.insert({
-    part: 'snippet',
-    requestBody: {
-      snippet: {
-        title: `${body.topic} playlist`,
-        description: 'Created by YouTube Music Playlist Wizard'
-      }
-    }
-  });
-  // Collect playlist id from api response
-  const newPlaylistId = playlistResponse.data.id;
-
-  // Get videos from youtube
-  const videos = await service.search.list({
-    part: 'snippet',
-    maxResults: body.size,
-    q: body.topic,
-    type: 'video',
-    topicId: '/m/04rlf', //Music
-    videoCategoryId: 10 //Music
-  });
-  // Save list of video objects
-  const videoObj = videos.data.items;
-  // Initialise empty array of links to be filled
-  const videoLinks = [];
-  // Save every video id in the list
-  for (let i=0; i < body.size; i++) {
-    videoLinks.push(videoObj[i].id.videoId);
-  }
-
-  // Add videos to playlist
-  for (let index = 0; index < body.size; index++) {
-    // Track the video position in the playlist
-    let videoPosition = 0;
-    await service.playlistItems.insert({
+  try {
+    // Create new playlist on user account
+    const playlistResponse = await service.playlists.insert({
       part: 'snippet',
       requestBody: {
         snippet: {
-          playlistId: newPlaylistId,
-          position: videoPosition,
-          resourceId: {
-            kind: 'youtube#video',
-            videoId: videoLinks[videoPosition]
-          }
+          title: `${body.topic} playlist`,
+          description: 'Created by YouTube Music Playlist Wizard'
         }
       }
     });
-    // Increment when previous video is successfully added
-    videoPosition++;
+    // Collect playlist id from api response
+    const newPlaylistId = playlistResponse.data.id;
+
+    // Get videos from youtube
+    const videos = await service.search.list({
+      part: 'snippet',
+      maxResults: body.size,
+      q: body.topic,
+      type: 'video',
+      topicId: '/m/04rlf', //Music
+      videoCategoryId: 10 //Music
+    });
+    // Save list of video objects
+    const videoObj = videos.data.items;
+    // Initialise empty array of links to be filled
+    const videoLinks = [];
+    // Save every video id in the list
+    for (let i = 0; i < body.size; i++) {
+      videoLinks.push(videoObj[i].id.videoId);
+    }
+
+    // Add videos to playlist
+    for (let index = 0; index < body.size; index++) {
+      // Track the video position in the playlist
+      let videoPosition = 0;
+      // Track current video to be added
+      let videoLink = videoLinks[index];
+      await service.playlistItems.insert({
+        part: 'snippet',
+        requestBody: {
+          snippet: {
+            playlistId: newPlaylistId,
+            position: videoPosition,
+            resourceId: {
+              kind: 'youtube#video',
+              videoId: videoLink
+            }
+          }
+        }
+      });
+      // Increment when previous video is successfully added
+      videoPosition++;
+    }
+  } catch (err) {
+    return res.status(401).json({ data: 'Insufficient authorisation' });
   }
 
 
