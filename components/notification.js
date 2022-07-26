@@ -10,7 +10,7 @@ export default function Notification() {
 
   return (
     <>
-      <Button variant='secondary' onClick={handleShow}>CLICK ME FIRST!</Button>
+      <Button variant='secondary' onClick={handleShow}>Privacy Policy</Button>
       <Modal
         centered
         show={show}
@@ -19,14 +19,15 @@ export default function Notification() {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>IMPORTANT!</Modal.Title>
+          <Modal.Title>Privacy Policy</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          This app is not currently verified by google. Hence,
-          only test users are able to access the api. If you would
-          like to be added as a test user, send an email to botbot40375@gmail.com
-          with the gmail associated with your YouTube account included. Alternatively,
-          visit the Github page for instructions on how to run the app locally.
+          This app is not verified by google yet. However, you can be
+          assured that your YouTube account is not tampered with, and the premissions
+          you grant to this service are only used to create your desired music playlist.
+          You can revoke access whenever you wish by going to the security section of your
+          Google account.
+          Visit the Github Page to inspect the codebase and view instructions on how to run the app locally.
         </Modal.Body>
         <Modal.Footer>
           <Button variant='secondary' onClick={handleClose}>
