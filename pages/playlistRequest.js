@@ -7,7 +7,6 @@ import Spinner from 'react-bootstrap/Spinner';
 import Container from 'react-bootstrap/Container'
 import { useState } from 'react';
 
-//TODO: Turn range slider into a seperate component
 export default function Playlistform() {
   const [click, setClick] = useState(false);
 
@@ -53,7 +52,7 @@ export default function Playlistform() {
               Topic
             </Form.Label>
             <Col sm={12}>
-              <Form.Control required type='text' placeholder='Jack Harlow' />
+              <Form.Control required type='text' placeholder='Lofi hip hop' />
             </Col>
           </Form.Group>
 
