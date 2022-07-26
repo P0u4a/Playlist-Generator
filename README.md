@@ -42,5 +42,6 @@ Run ```npm run dev``` in the terminal and make the magic happen.
 
 # Future Extensions 🔮
 * Implement bot account to create playlists on if user does not want to sign in
-* Replace JS alert box with bootstrap toasts
 * Add playlist preset options
+* Implement autocomplete functionality in search bar
+* 
