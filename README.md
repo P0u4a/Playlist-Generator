@@ -6,7 +6,7 @@ Simply enter the artist, band, or genre you would like your playlist to be based
 
 <img src='https://user-images.githubusercontent.com/66873325/180650652-60437fc3-037a-4a55-927b-2564d38cd70f.svg' alt='logo' width='100' height='100'/>
 
-This project was built with Nextjs, Nextauth for authentication and react-bootstrap for the UI. 
+This project was built with Nextjs, Youtube data api v3, Nextauth for authentication and react-bootstrap for the UI. 
 
 Demo Link here
 
@@ -42,5 +42,5 @@ Run ```npm run dev``` in the terminal and make the magic happen.
 
 # Future Extensions 🔮
 * Implement bot account to create playlists on if user does not want to sign in
-* Replace JS alert box with bootstrap toasts
 * Add playlist preset options
+* Implement autocomplete functionality in search bar
