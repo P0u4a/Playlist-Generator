@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container'
 import { useState } from 'react';
 
 export default function Playlistform() {
+  // Keep track of the submit button's state
   const [click, setClick] = useState(false);
 
   // Handle the submit event on form submit
@@ -26,10 +27,10 @@ export default function Playlistform() {
 
     // Send the form data to our API and get a response
     const response = await fetch('/api/playlistMaker', {
-      // Body of the request is the JSON data created above
+
       body: JSONdata,
 
-      //Sending JSON data to server
+      //Send JSON data to server
       headers: {
         'Content-Type': 'application/json',
       },
