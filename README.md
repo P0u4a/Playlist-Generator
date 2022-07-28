@@ -8,7 +8,7 @@ Simply enter the artist, band, or genre you would like your playlist to be based
 
 This project was built with Nextjs, Youtube data api v3, Nextauth for authentication and react-bootstrap for the UI. 
 
-Demo Link here
+<b>Demo</b>: https://playlist-generator-p0u4a.vercel.app
 
 # How to run locally
 
