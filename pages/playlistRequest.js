@@ -67,7 +67,7 @@ export default function Playlistform() {
           </Form.Group>
 
           <Form.Group as={Row} className='mb-3'>
-            <Col sm={{ span: 10, offset: 2 }}>
+            <Col>
               <Button variant='primary' type='submit'>
                 {!click && 'Create'}
                 {click && <Spinner animation='border' variant='light' />}
