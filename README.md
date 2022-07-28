@@ -23,11 +23,11 @@ the Youtube data api v3
 Configure your Oauth consent screen, making sure to set the scope
 to ```https://www.googleapis.com/auth/youtube.force-ssl```
 
-Under the credentials tab, click new credentials and choose **new
-Oauth client ID**. Choose web app as the application type and set the
-**Authorised Javascript Origins** to ```http://localhost:3000```
+Under the ```credentials tab```, click ```new credentials``` and choose ```**new
+Oauth client ID**```. Choose `web app` as the application type and set the
+`**Authorised Javascript Origins**` to ```http://localhost:3000```
 (assuming you are hosting on port 3000, otherwise set your own port).
-Then, set the **Authorised redirect URI** to ```http://localhost:3000/api/auth/callback/google```.
+Then, set the `**Authorised redirect URI**` to ```http://localhost:3000/api/auth/callback/google```.
 ## Enviornment Variables
 Inside the app's root directory, create a ```.env``` file and add the following variables:
  * ```CLIENT_ID```
