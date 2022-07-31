@@ -25,7 +25,7 @@ export default function Playlistform() {
 
     const JSONdata = JSON.stringify(data);
 
-    // Send the form data to our API and get a response
+    // Send form data to API and get a response
     const response = await fetch('/api/playlistMaker', {
 
       body: JSONdata,
