@@ -14,9 +14,6 @@ export default async function handler(req, res) {
 
   // Get data submitted in request's body
   const body = req.body;
-  // Logging to see the responses
-  // in the command line
-  console.log('body: ', body);
 
   // Guard clause checks for playlist topic and size,
   // and returns early if they are not found
