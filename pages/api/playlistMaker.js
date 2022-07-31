@@ -94,11 +94,11 @@ export default async function handler(req, res) {
       // Increment when previous video is successfully added
       videoPosition++;
     }
+    // Success
+    res.status(200).json({ data: '🎉 Your playlist has been successfully created\nCheck your YouTube account!' });
+    
   } catch (err) {
     return res.status(401).json({ data: 'Something went wrong 😬...\nDid you give access to your YouTube account?' });
   }
 
-
-  // Later update front-end to have a success pop-up with a confetti like animation
-  res.status(200).json({ data: '🎉 Your playlist has been successfully created\nCheck your YouTube account!' });
 }
