@@ -10,6 +10,7 @@ export default function Home() {
       <Head>
         <title>Music Playlist Generator</title>
         <meta name='Title' content='Youtube playlist generator' />
+        <meta name='google-site-verification' content='ErCqfgiHBx18jxnURplirBqL24OUNgkV4Cu12pQCewQ' />
         <link rel='icon' href='/vinyl.svg' />
       </Head>
       <main className={styles.main}>
