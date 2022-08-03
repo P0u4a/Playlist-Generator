@@ -86,7 +86,7 @@ export default async function handler(req, res) {
     }
 
   } catch (err) {
-    return res.status(401).json({ data: 'Something went wrong 😬...\nDid you give access to your YouTube account?' });
+    return res.status(401).json({ data: 'Something went wrong 😬...\nDo you have a YouTube channel?' });
   }
   
   // Success
