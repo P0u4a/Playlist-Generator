@@ -45,10 +45,15 @@ export default function Playlistform() {
       },
       method: 'POST',
     });
-
+    
     // Get the response data from server as JSON
-    const result = await response.json();
-    alert(`${result.data}`);
+    try {
+      const result = await response.json();
+      alert(`${result.data}`);
+    } catch(err) {
+      alert('Your playlist has been successfully created 🎉\nCheck your YouTube account!')
+    }
+
     // Stop spinner
     setClick(false);
   }
