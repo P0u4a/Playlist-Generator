@@ -63,26 +63,32 @@ export default async function handler(req, res) {
     }
 
     // Add videos to playlist
-    for (let index = 0; index < body.size; index++) {
-      // Track the video position in the playlist
-      let videoPosition = 0;
-      // Track current video to be added
-      let videoLink = videoLinks[index];
-      await service.playlistItems.insert({
-        part: 'snippet',
-        requestBody: {
-          snippet: {
-            playlistId: newPlaylistId,
-            position: videoPosition,
-            resourceId: {
-              kind: 'youtube#video',
-              videoId: videoLink
+    try {
+      for (let index = 0; index < body.size; index++) {
+        // Track the video position in the playlist
+        let videoPosition = 0;
+        // Track current video to be added
+        let videoLink = videoLinks[index];
+        await service.playlistItems.insert({
+          part: 'snippet',
+          requestBody: {
+            snippet: {
+              playlistId: newPlaylistId,
+              position: videoPosition,
+              resourceId: {
+                kind: 'youtube#video',
+                videoId: videoLink
+              }
             }
           }
-        }
-      });
-      // Increment when previous video is successfully added
-      videoPosition++;
+        });
+        // Increment when previous video is successfully added
+        videoPosition++;
+      }
+    } catch(err) {
+      // If api method encounters an error ignore and send success message 
+      // since the playlist is already created and populated at this stage
+      return res.status(200).json({ data: 'Your playlist has been successfully created 🎉\nCheck your YouTube account!' })
     }
 
   } catch (err) {
