@@ -6,6 +6,7 @@ import Slider from '../components/range-slider';
 import Spinner from 'react-bootstrap/Spinner';
 import Container from 'react-bootstrap/Container'
 import { useState } from 'react';
+import { getSession } from 'next-auth/react';
 
 export default function Playlistform() {
   // Keep track of the submit button's state
@@ -15,6 +16,14 @@ export default function Playlistform() {
   const handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page
     event.preventDefault();
+
+    // Check user is signed in to use the api
+    const session = await getSession();
+    // Prevent api call if user is not signed in
+    if (!session) {
+      return alert('You must be signed in to use this service 🤖');
+    }
+
     // Start spinner
     setClick(true);
     // Get data from the form.

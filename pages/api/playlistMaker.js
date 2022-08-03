@@ -1,17 +1,7 @@
 import { google } from 'googleapis';
-import { getSession } from 'next-auth/react';
 import { getToken } from 'next-auth/jwt';
 
-
 export default async function handler(req, res) {
-
-  // Check user is signed in to use the api
-  const session = await getSession({ req });
-
-  if (!session) {
-    return res.status(401).json({ data: 'You must be signed in to use this service 🤖' });
-  }
-
   // Get data submitted in request's body
   const body = req.body;
 
@@ -100,5 +90,5 @@ export default async function handler(req, res) {
   }
   
   // Success
-  res.status(200).json({ data: 'Your playlist has been successfully created 🎉\nCheck your YouTube account!' });
+  return res.status(200).json({ data: 'Your playlist has been successfully created 🎉\nCheck your YouTube account!' });
 }
