@@ -2,6 +2,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 import Playlistform from './playlistRequest';
+import LandingPage from '../components/landing-page';
 
 export default function Home() {
 
@@ -21,6 +22,9 @@ export default function Home() {
         <p className={styles.description}>
           jumpstart your youtube playlist creation!
         </p>
+
+        <LandingPage />
+
         <div id='form'>
           <Playlistform />
         </div>

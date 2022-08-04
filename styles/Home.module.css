@@ -48,6 +48,28 @@
   color:royalblue;
 }
 
+.headings {
+  line-height: 2;
+  font-size: 2rem;
+  color:royalblue;
+}
+
+.generator {
+  margin: 4rem 0;
+  line-height: 0;
+  font-size: 4rem;
+  color:royalblue;
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+}
+
+
 .logo {
   height: 1em;
   margin-left: 0.5rem;

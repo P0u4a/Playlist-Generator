@@ -6,6 +6,7 @@ import Slider from '../components/range-slider';
 import Spinner from 'react-bootstrap/Spinner';
 import Container from 'react-bootstrap/Container'
 import { useState } from 'react';
+import styles from '../styles/Home.module.css';
 import { getSession } from 'next-auth/react';
 
 export default function Playlistform() {
@@ -60,6 +61,8 @@ export default function Playlistform() {
 
   return (
     <>
+      <div className={styles.generator}>GENERATOR</div>
+      <br />
       <Container>
         <Form onSubmit={handleSubmit}>
           <Form.Group as={Row} className='mb-3' controlId='topic'>
