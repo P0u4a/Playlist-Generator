@@ -14,7 +14,7 @@ export default function Home() {
         <meta name='google-site-verification' content='ErCqfgiHBx18jxnURplirBqL24OUNgkV4Cu12pQCewQ' />
         <link rel='icon' href='/vinyl.svg' />
       </Head>
-      <main className={styles.main}>
+      <main className={styles.main} id='home'>
         <h1 className={styles.title}>
           Music Playlist Generator
         </h1>

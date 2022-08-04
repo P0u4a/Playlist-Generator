@@ -24,6 +24,11 @@ export default function Navigate() {
           <Navbar.Collapse id='navbar-nav'>
             <Nav className='me-auto'>
               <Nav.Item>
+                <Link href='#home' passHref>
+                  <Nav.Link>Home</Nav.Link>
+                </Link>
+              </Nav.Item>
+              <Nav.Item>
                 <Link href='#form' passHref>
                   <Nav.Link>Create Playlist</Nav.Link>
                 </Link>
@@ -33,6 +38,7 @@ export default function Navigate() {
                   <Nav.Link>Github Page</Nav.Link>
                 </Link>
               </Nav.Item>
+
             </Nav>
 
             <Nav>
