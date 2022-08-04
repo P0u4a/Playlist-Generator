@@ -22,13 +22,18 @@ export default function Notification() {
           <Modal.Title>Privacy Policy</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          This app is not verified by google <b>yet</b>. However, you can be
-          assured that your YouTube account is not tampered with, and the premissions
-          you grant to this service are only used to create your desired music playlist.
-          You can revoke access whenever you wish by going to the security section of your
-          Google account.<br /><br />
-          
-          Visit the Github Page to inspect the codebase and view instructions on how to run the app locally.
+          This app uses Oauth2.0 to make authorised API calls to the YouTube Data API V3.
+          The scope of access enables the app to see, edit, and permanently delete your
+          YouTube videos, ratings, comments and captions. However, the app only uses this scope to
+          create a playlist on your account, search for videos on YouTube related to your input, and
+          add such videos to your playlist. User data is stored in encrypted JSON Web Tokens and the app&apos;s access to your
+          YouTube account expires after some time. You can also revoke access at any time you wish through your Google account.
+          <br />
+          Music Playlist Generator&apos;s use and transfer to any other
+          app of infomration received from Google APIs will adhere
+          to the <i>Google API Services User Data Policy</i>.
+
+
         </Modal.Body>
         <Modal.Footer>
           <Button variant='secondary' onClick={handleClose}>
