@@ -13,7 +13,7 @@
     "google-auth-library": "^8.1.0",
     "googleapis": "^104.0.0",
     "next": "12.2.0",
-    "next-auth": "^4.9.0",
+    "next-auth": "^4.10.3",
     "react": "18.2.0",
     "react-bootstrap": "^2.4.0",
     "react-dom": "18.2.0"
