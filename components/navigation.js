@@ -24,12 +24,12 @@ export default function Navigate() {
           <Navbar.Collapse id='navbar-nav'>
             <Nav className='me-auto'>
               <Nav.Item>
-                <Link href='#home' passHref>
+                <Link href='/' passHref>
                   <Nav.Link>Home</Nav.Link>
                 </Link>
               </Nav.Item>
               <Nav.Item>
-                <Link href='#form' passHref>
+                <Link href='/playlistRequest' passHref>
                   <Nav.Link>Create Playlist</Nav.Link>
                 </Link>
               </Nav.Item>

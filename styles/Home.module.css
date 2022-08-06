@@ -56,6 +56,7 @@
 
 .generator {
   margin: 4rem 0;
+  text-align: center;
   line-height: 0;
   font-size: 4rem;
   color:royalblue;
@@ -69,6 +70,19 @@
   max-width: 800px;
 }
 
+.paragraph {
+  color: #f0f8ff;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.formgroup {
+  display: flex;
+  width: 100%;
+  max-width: 60%;
+  margin: 0 auto;
+  justify-content: center;
+}
 
 .logo {
   height: 1em;

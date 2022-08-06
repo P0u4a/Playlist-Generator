@@ -24,10 +24,7 @@ export default function Home() {
         </p>
 
         <LandingPage />
-
-        <div id='form'>
-          <Playlistform />
-        </div>
+      
       </main>
 
       <footer className={styles.footer}>

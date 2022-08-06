@@ -63,7 +63,7 @@ export default function Playlistform() {
     <>
       <div className={styles.generator}>GENERATOR</div>
       <br />
-      <Container>
+      <Container className={styles.formgroup}>
         <Form onSubmit={handleSubmit}>
           <Form.Group as={Row} className='mb-3' controlId='topic'>
             <Form.Label style={{ color: '#f0f8ff' }}>
@@ -84,8 +84,8 @@ export default function Playlistform() {
           </Form.Group>
 
           <Form.Group as={Row} className='mb-3'>
-            <Col>
-              <Button variant='primary' type='submit'>
+            <Col className='d-grid gap-2'>
+              <Button variant='primary' size='lg' type='submit'>
                 {!click && 'Create'}
                 {click && <Spinner animation='border' variant='light' />}
               </Button>
