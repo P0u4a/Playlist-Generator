@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Image from 'next/image';
-import Playlistform from './playlistRequest';
+import Link from 'next/link';
 import LandingPage from '../components/landing-page';
 
 export default function Home() {
@@ -19,21 +19,21 @@ export default function Home() {
           Music Playlist Generator
         </h1>
 
-        <p className={styles.description}>
-          jumpstart your youtube playlist creation!
-        </p>
+        <Link href='playlistRequest'>
+          <a className={styles.description}>
+            jumpstart your youtube playlist creation!
+          </a>
+        </Link>
 
         <LandingPage />
       
       </main>
 
       <footer className={styles.footer}>
-        <a>
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src='/vercel.svg' alt='vercel logo' width={72} height={20} />
-          </span>
-        </a>
+        Powered by{' '}
+        <span className={styles.logo}>
+          <Image src='/vercel.svg' alt='vercel logo' width={72} height={20} />
+        </span>
       </footer>
     </div>
   );

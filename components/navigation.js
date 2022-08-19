@@ -6,7 +6,7 @@ import LoginBtn from './login-btn';
 import Image from 'next/image';
 import Link from 'next/link';
 import Notification from './notification';
-//TODO: Add gradient to navbar background
+
 export default function Navigate() {
   return (
     <>
