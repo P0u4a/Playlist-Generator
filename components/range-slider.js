@@ -26,7 +26,7 @@ export default function Slider() {
 
   return (
     <>
-      <OverlayTrigger delay={{ hide: 800 }} placement='right' overlay={renderTooltip}>
+      <OverlayTrigger delay={{ hide: 300 }} placement='right' overlay={renderTooltip}>
         <Form.Range
           value={value} onChange={change => setValue(change.target.value)}
           min={1} max={50}

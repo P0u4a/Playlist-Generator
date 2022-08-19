@@ -19,7 +19,7 @@
   justify-content: center;
   align-items: center;
   background-color: #212529;
-  color:aliceblue;
+  color:silver;
 }
 
 .footer a {
@@ -71,9 +71,11 @@
 }
 
 .paragraph {
-  color: #f0f8ff;
+  color:silver;  
   text-align: justify;
   text-justify: inter-word;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .formgroup {
@@ -88,3 +90,4 @@
   height: 1em;
   margin-left: 0.5rem;
 }
+
