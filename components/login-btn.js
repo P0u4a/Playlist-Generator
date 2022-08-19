@@ -1,15 +1,24 @@
 import { useSession, signIn, signOut } from 'next-auth/react';
 import Button from 'react-bootstrap/Button';
+import styles from '../styles/Signin.module.css';
+import Modal from 'react-bootstrap/Modal';
+import { useState } from 'react';
 
 export default function LoginBtn() {
+  
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const { data: session } = useSession();
 
   if (session) {
     return (
       <>
         <Button variant='light'
-                              // Prevent page reload
-        onClick={() => signOut({ redirect: false })}>
+          // Prevent page reload
+          onClick={() => signOut({ redirect: false })}>
           Sign out
         </Button>
       </>
@@ -18,11 +27,28 @@ export default function LoginBtn() {
 
   return (
     <>
-      <Button variant='primary'
-                    // Start Oauth flow
-      onClick={() => signIn('google')}>
-        Sign in
-      </Button>
+      <Button variant='primary' onClick={handleShow}>Sign in</Button>
+      <Modal
+        centered
+        show={show}
+        onHide={handleClose}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Sign in</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <br />
+          <button
+            className={styles.signinBtn}
+            onClick={() => signIn('google')} />
+          <br />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant='secondary' onClick={handleClose}>
+            Return
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }

@@ -1,0 +1,17 @@
+.signinBtn {
+  display: inline-block;
+  border: none;
+  width: 191px;
+  height: 46px;
+  background: url('../public/google.png');
+  background-repeat: no-repeat;
+  position:absolute; 
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.signinBtn:hover {
+  cursor: pointer;
+}
