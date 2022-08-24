@@ -66,7 +66,7 @@ export default function Playlistform() {
       <Container className={styles.formgroup}>
         <Form onSubmit={handleSubmit}>
           <Form.Group as={Row} className='mb-3' controlId='topic'>
-            <Form.Label style={{ color: 'silver' }}>
+            <Form.Label style={{ color: '#606060' }}>
               Topic
             </Form.Label>
             <Col sm={12}>
@@ -75,7 +75,7 @@ export default function Playlistform() {
           </Form.Group>
 
           <Form.Group as={Row} className='mb-3' controlId='size'>
-            <Form.Label style={{ color: 'silver' }}>
+            <Form.Label style={{ color: '#606060' }}>
               Size
             </Form.Label>
             <Col sm={12}>

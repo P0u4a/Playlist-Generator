@@ -19,7 +19,7 @@
   justify-content: center;
   align-items: center;
   background-color: #212529;
-  color:silver;
+  color:ivory;
 }
 
 .footer a {
@@ -71,7 +71,7 @@
 }
 
 .paragraph {
-  color:silver;  
+  color:#606060;  
   text-align: justify;
   text-justify: inter-word;
   margin-left: 1rem;
