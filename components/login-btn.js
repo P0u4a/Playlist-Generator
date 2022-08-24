@@ -38,8 +38,11 @@ export default function LoginBtn() {
         </Modal.Header>
         <Modal.Body>
           <br />
-          <button
-            className={styles.signinBtn}
+          <h1 className={styles.buttonText}>
+            Sign in with Google
+          </h1>
+          <span
+            className={styles.customBtn}
             onClick={() => signIn('google')} />
           <br />
         </Modal.Body>
