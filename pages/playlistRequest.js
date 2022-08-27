@@ -46,12 +46,12 @@ export default function Playlistform() {
       },
       method: 'POST',
     });
-    
+
     // Get the response data from server as JSON
     try {
       const result = await response.json();
       alert(`${result.data}`);
-    } catch(err) {
+    } catch (err) {
       alert('Your playlist has been successfully created 🎉\nCheck your YouTube account!')
     }
 
@@ -93,6 +93,9 @@ export default function Playlistform() {
           </Form.Group>
         </Form>
       </Container>
+      <p style={{ textAlign: 'center', color: '#606060' }}>
+        <i>*Note: You must have a YouTube Channel on the account you wish to make the playlist for.</i>
+      </p>
     </>
   );
 }
