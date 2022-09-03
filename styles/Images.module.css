@@ -1,0 +1,27 @@
+.listening {
+    position: absolute;
+    top: 32%;
+    left: 9%;
+}
+
+.vibin {
+    position: absolute;
+    top: 32%;
+    right: 9%;
+}
+
+@media only screen and (max-width: 600px) {
+    .listening {
+        position: absolute;
+        top: auto;
+        bottom: auto;
+        left: auto;
+    }
+
+    .vibin {
+        position: absolute;
+        top: auto;
+        bottom: auto;
+        left: auto;
+    }
+}

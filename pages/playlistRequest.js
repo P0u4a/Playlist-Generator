@@ -1,12 +1,14 @@
 import Button from 'react-bootstrap/Button';
+import Image from 'next/image';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
-import Slider from '../components/range-slider';
+import Slider from '../components/Slider';
 import Spinner from 'react-bootstrap/Spinner';
 import Container from 'react-bootstrap/Container'
 import { useState } from 'react';
 import styles from '../styles/Home.module.css';
+import images from '../styles/Images.module.css';
 import { getSession } from 'next-auth/react';
 
 export default function Playlistform() {
@@ -66,7 +68,7 @@ export default function Playlistform() {
       <Container className={styles.formgroup}>
         <Form onSubmit={handleSubmit}>
           <Form.Group as={Row} className='mb-3' controlId='topic'>
-            <Form.Label style={{ color: '#606060' }}>
+            <Form.Label>
               Topic
             </Form.Label>
             <Col sm={12}>
@@ -75,7 +77,7 @@ export default function Playlistform() {
           </Form.Group>
 
           <Form.Group as={Row} className='mb-3' controlId='size'>
-            <Form.Label style={{ color: '#606060' }}>
+            <Form.Label>
               Size
             </Form.Label>
             <Col sm={12}>
@@ -93,9 +95,17 @@ export default function Playlistform() {
           </Form.Group>
         </Form>
       </Container>
-      <p style={{ textAlign: 'center', color: '#606060' }}>
+      <p style={{ textAlign: 'center'}}>
         <i>*Note: You must have a YouTube Channel on the account you wish to make the playlist for.</i>
       </p>
+
+      <div className={images.listening}>
+        <Image src='/listening.svg' alt='pic1' width={200} height={200}/>
+      </div>
+      <div className={images.vibin}>
+        <Image src='/vibin.svg' alt='pic2' width={200} height={200}/>
+      </div>
+
     </>
   );
 }
