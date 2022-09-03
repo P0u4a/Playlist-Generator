@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import Navigate from '../components/navigation';
+import Navigate from '../components/Navigate';
 import { SessionProvider } from "next-auth/react";
 
 export default function MyApp({ Component, pageProps: { session, ...pageProps } }) {
