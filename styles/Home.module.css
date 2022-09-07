@@ -109,3 +109,25 @@
   height: 1em;
   margin-left: 0.5rem;
 }
+
+
+@media only screen and (max-width: 600px) {
+  .paragraph {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    text-align:justify;
+
+  }
+
+  .paragraphAlt {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    text-align:justify;
+
+  }
+
+}
