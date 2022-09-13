@@ -9,11 +9,11 @@ export default function PrivacyPolicy() {
         Privacy Policy
       </div>
       <p className={styles.paragraphAlt}>
-        This app uses Oauth2.0 to make authorised API calls to the YouTube Data API V3.
+        This app uses OAuth2.0 to make authorised API calls to the YouTube Data API V3.
         The scope of access enables the app to see, edit, and permanently delete your
-        YouTube videos, ratings, comments and captions. However, the app only uses this scope to
-        create a playlist on your account, search for videos on YouTube related to your input, and
-        add such videos to your playlist. User data is stored in encrypted JSON Web Tokens and the app&apos;s access to your
+        YouTube videos, ratings, comments and captions. Furthermore, by signin in, you consent the app to associate you with your personal information on Google. 
+        The app uses these scopes to create a YouTube playlist on your YouTube channel, search for videos on your YouTube account related to the prompt you entered on the app, and
+        add the resulting videos to the created playlist. User data is contained within encrypted JSON Web Tokens stored in browser memory and the app&apos;s access to your
         YouTube account expires after some time. You can also revoke access at any time you wish through your Google account.
         Music Playlist Generator&apos;s use and transfer to any other
         app of infomration received from Google APIs will adhere to the Google API Services User Data Policy.
