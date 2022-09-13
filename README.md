@@ -39,8 +39,3 @@ Oauth credentials. Lastly, you should set ```NEXTAUTH_SECRET``` to a randomly ge
 is used to encyrpt the JSON web tokens generated during the Oauth flow.
 ## Running the app
 Run ```npm run dev``` in the terminal and make the magic happen.
-
-# Future Extensions 🔮
-* Implement bot account to create playlists on if user does not want to sign in
-* Add playlist preset options
-* Implement autocomplete functionality in search bar
