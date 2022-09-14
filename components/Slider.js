@@ -12,11 +12,12 @@ export default function Slider() {
     playlistSize = 'small 😀';
   }
   else if (value >= 17 && value <= 32) {
-    playlistSize = 'medium 😓';
+    playlistSize = 'medium  😎';
   }
   else {
-    playlistSize = 'large 😰';
+    playlistSize = 'large 🤩';
   }
+
   // Render tooltip on Range slider
   const renderTooltip = (props) => (
     <Tooltip id='slider-tooltip' {...props}>
@@ -26,8 +27,9 @@ export default function Slider() {
 
   return (
     <>
-      <OverlayTrigger delay={{ hide: 300 }} placement='right' overlay={renderTooltip}>
+      <OverlayTrigger delay={{ hide: 300 }} placement='top' overlay={renderTooltip}>
         <Form.Range
+          // Update slider value
           value={value} onChange={change => setValue(change.target.value)}
           min={1} max={50}
         />
