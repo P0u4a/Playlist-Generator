@@ -5,12 +5,13 @@ import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 
 export default function LoginBtn() {
-  
+  // Track the visibility of modal
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // Check if user is signed in
   const { data: session } = useSession();
 
   if (session) {
