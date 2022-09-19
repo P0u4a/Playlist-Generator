@@ -1,8 +1,6 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 
-//TODO: Need to handle cases where user denies access during auth process
-
 export default NextAuth({
   providers: [
     GoogleProvider({
@@ -30,6 +28,10 @@ export default NextAuth({
       }
       return token;
     }
+  },
+  // Override default signin page
+  pages: {
+    signIn: '/signin'
   }
 
 });

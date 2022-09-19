@@ -44,7 +44,8 @@ export default function LoginBtn() {
           </h1>
           <span
             className={styles.customBtn}
-            onClick={() => signIn('google')} />
+            // Sign in with Google and redirect to Create page upon signin
+            onClick={() => signIn('google', { callbackUrl: 'https://playlist-generator-p0u4a.vercel.app/playlistRequest' })} />
           <br />
         </Modal.Body>
         <Modal.Footer>
