@@ -5,8 +5,7 @@ import Link from 'next/link';
 export default function ErrorPage() {
   return (
     <>
-
-      <h1 className={styles.generator}>
+      <h1 className={styles.errorPage}>
         Access Denied 😕
       </h1>
 

@@ -105,6 +105,15 @@
   justify-content: center;
 }
 
+.errorPage {
+  margin: auto;
+  line-height: 6rem;
+  text-align: center;
+  font-size: 3rem;
+  color:royalblue;
+}
+
+
 .logo {
   height: 1em;
   margin-left: 0.5rem;
