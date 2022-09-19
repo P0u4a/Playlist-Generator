@@ -18,7 +18,7 @@ export default function Home() {
 
       <main className={styles.main} id='home'>
         <h1 className={styles.title}>
-          Music Playlist Generator         
+          Music Playlist Generator
           <Spinner animation="grow" variant="dark" size='sm' />
         </h1>
 
@@ -34,7 +34,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-      Powered by
+        Powered by
         <span className={styles.logo}>
           <Image src='/vercel.svg' alt='vercel logo' width={72} height={20} />
         </span>

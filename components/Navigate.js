@@ -20,7 +20,7 @@ export default function Navigate() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls='navbar-nav' />
           <Navbar.Collapse id='navbar-nav'>
-            <Nav className='me-auto'>
+            <Nav className='me-auto' defaultActiveKey='/'>
               <Nav.Item>
                 <Link href='/' passHref>
                   <Nav.Link>Home</Nav.Link>
