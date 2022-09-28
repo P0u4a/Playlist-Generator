@@ -26,14 +26,10 @@ export default function Navigate() {
                   <Nav.Link>Home</Nav.Link>
                 </Link>
               </Nav.Item>
+              
               <Nav.Item>
                 <Link href='/playlistRequest' passHref>
                   <Nav.Link>Create</Nav.Link>
-                </Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Link href='https://github.com/P0u4a/Playlist-Generator' passHref>
-                  <Nav.Link>GitHub</Nav.Link>
                 </Link>
               </Nav.Item>
 
