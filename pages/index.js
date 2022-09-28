@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import LandingPage from '../components/LandingPage';
 import Spinner from 'react-bootstrap/Spinner';
+import Col from 'react-bootstrap/Col';
 
 export default function Home() {
 
@@ -34,10 +35,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        Powered by
-        <span className={styles.logo}>
-          <Image src='/vercel.svg' alt='vercel logo' width={72} height={20} />
-        </span>
+        © 2022 🗿 | Thanks for visiting!
       </footer>
     </div>
   );
